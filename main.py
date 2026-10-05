@@ -6,12 +6,21 @@ class Player:
     def __init__(self, x, y):
         self.x = x
         self.y = y
+        self.vx = 1
+        self.vy = 1
 
     def update(self):
-        self.x = (self.x + 1) % pyxel.width
+        if pyxel.btn(pyxel.KEY_LEFT):
+            self.x -= self.vx
+        if pyxel.btn(pyxel.KEY_RIGHT):
+            self.x += self.vx
+        if pyxel.btn(pyxel.KEY_UP):
+            self.y -= self.vy
+        if pyxel.btn(pyxel.KEY_DOWN):
+            self.y += self.vy
 
     def draw(self):
-        pyxel.rect(self.x, 0, 8, 8, 9)
+        pyxel.rect(self.x, self.y, 8, 8, 9)
 
 
 
